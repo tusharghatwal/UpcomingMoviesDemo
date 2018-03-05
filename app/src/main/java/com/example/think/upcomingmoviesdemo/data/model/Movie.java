@@ -20,7 +20,6 @@ import java.text.SimpleDateFormat;
  */
 @Entity
 public class Movie implements Parcelable {
-    public static final String INTENT_MOVIE = "Movie";
 
     @Property
     @JsonProperty("poster_path")
