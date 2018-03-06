@@ -7,6 +7,7 @@ import android.util.Log;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.Property;
@@ -15,9 +16,7 @@ import org.greenrobot.greendao.annotation.Transient;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-/**
- * Created by Mahavir on 4/12/2016.
- */
+
 @Entity
 public class Movie implements Parcelable {
 
@@ -64,9 +63,9 @@ public class Movie implements Parcelable {
         readFromParcel(in);
     }
 
-//    @Generated(hash = 340235262)
+    @Generated(hash = 340235262)
     public Movie(String posterPath, String adult, String overview, String releaseDate, String id, String originalTitle, String title,
-                 String backdropPath, float popularity, int voteCount, float voteAverage) {
+            String backdropPath, float popularity, int voteCount, float voteAverage) {
         this.posterPath = posterPath;
         this.adult = adult;
         this.overview = overview;
