@@ -12,14 +12,12 @@ import org.greenrobot.greendao.database.Database;
  */
 
 public class DbOpenHelper extends DaoMaster.DevOpenHelper {
-    private static final String DATABASE_NAME = "movies_app.db";
-
-    public DbOpenHelper(Context context) {
-        super(context, DATABASE_NAME);
+    public DbOpenHelper(Context context, String dbname) {
+        super(context, dbname);
     }
 
-    public DbOpenHelper(Context context, SQLiteDatabase.CursorFactory factory) {
-        super(context, DATABASE_NAME, factory);
+    public DbOpenHelper(Context context, String dbname, SQLiteDatabase.CursorFactory factory) {
+        super(context, dbname, factory);
     }
 
     @Override

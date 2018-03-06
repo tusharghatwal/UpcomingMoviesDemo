@@ -21,8 +21,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     private ProgressBar mProgressBar;
     private RecyclerView mRecyclerMovies;
     private PreferencesHelper mPreferenceHelper;
-    private DbHelper dbHelper;
-    private MoviesTable moviesTable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +31,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         mRecyclerMovies = findViewById(R.id.recyclerMovies);
 
         mPreferenceHelper = new PreferencesHelper(this);
-//        dbHelper = new DbHelper(this);
-        dbHelper = DbHelper.getInstance(this);
-        moviesTable = new MoviesTable(dbHelper);
-        mPresenter = new MainActivityPresenter(this, mPreferenceHelper, moviesTable);
+        mPresenter = new MainActivityPresenter(this, mPreferenceHelper);
 
         mPresenter.getConfigurationAndLoadMovies();
-        moviesTable.getallMovies();
+//        moviesTable.getAllMovies();
+
     }
 
     @Override

@@ -60,10 +60,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolderMovies holder, final int position) {
-        final Movie r = mListMovies.get(position);
-        String imageUrl = mPreferencesHelper.getThumbnailBaseImageUrl() + r.getPosterPath();
+        final Movie movie = mListMovies.get(position);
+        String imageUrl = mPreferencesHelper.getThumbnailBaseImageUrl() + movie.getPosterPath();
 
-        holder.mPlaceName.setText(r.getTitle());
+        holder.mPlaceName.setText(movie.getTitle());
         Picasso.with(mContext)
                 .load(imageUrl)
                 .fit()
@@ -75,7 +75,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, MovieDetailsActivity.class);
-                intent.putExtra(MoviesAdapter.KEY, r);
+                intent.putExtra(MoviesAdapter.KEY, movie);
                 mContext.startActivity(intent);
             }
         });

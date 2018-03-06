@@ -15,20 +15,27 @@ import org.greenrobot.greendao.rx.RxDao;
 
 public class DbHelper {
 
-    private static Context mContext;
-//    private static DbHelper dbHelper;
+    private static final String DATABASE_NAME = "movies_app.db";
 
     private DaoSession daoSession;
+    private static DbHelper dbHelper;
 
-    private DbHelper() {
-        DbOpenHelper helper = new DbOpenHelper(mContext);
+    private DbHelper(Context context) {
+        DbOpenHelper helper = new DbOpenHelper(context, DATABASE_NAME);
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
     }
 
-    public static DbHelper getInstance(Context context){
-        mContext = context;
-        return new DbHelper();
+    public static void init(Context context) {
+        if(dbHelper == null) {
+            dbHelper = new DbHelper(context);
+        }
+    }
+
+    public static DbHelper getInstance(){
+        if(dbHelper == null) throw new IllegalStateException("DbHelper Instance is null");
+
+        return  dbHelper;
     }
 
     public DaoSession getDaoSession(){
